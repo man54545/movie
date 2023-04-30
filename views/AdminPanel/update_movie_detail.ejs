@@ -1,0 +1,70 @@
+<%- include('header') %>
+
+<section class="pcoded-main-container p-5">
+    <div >
+        <!-- [ breadcrumb ] start -->
+     
+        <div class="row">
+            <div class="col-lg-12">
+                <form action="/movie_details/editData" enctype="multipart/form-data" method="post">
+                    <input type="hidden" name="editId" value="<%= detail.id %>">
+                    <div class="form-floating d-flex align-items-center">
+                        <label class="floatingInput mb-0" style="margin-right: 20px;">Enter Movie Name :-</label>
+                        <input type="text" class="form-control border-0" value="<%= detail.movie_name %>" style="box-shadow: none; width: 30%;" placeholder="Movie Name" name="movie_name">
+                    </div><br>
+                    <div class="form-floating d-flex align-items-center">
+                        <% detail.movie_quality.forEach((v, i) => { %>
+                        <label class="floatingInput mb-0" style="margin-right: 20px;">Enter Movie Quality :-</label>
+                        <input type="checkbox" class="border-0 me-2" style="box-shadow: none;" placeholder="Movie Quality" name="movie_quality[]" value="HD" <% if(v == "HD") { %> <%= "checked" %> <% } %>>&nbsp; HD
+                        <div class="mx-4"><input type="checkbox" class="border-0 me-2" style="box-shadow: none;" placeholder="Movie Quality"  value="3D" name="movie_quality[]" <% if(v == "3D") { %> <%= "checked" %> <% } %>>&nbsp; 3D</div>
+                        <input type="checkbox" class="border-0 me-2" style="box-shadow: none;" placeholder="Movie Quality" name="movie_quality[]" value="4K" <% if(v == "4K") { %> <%= "checked" %> <% } %>>&nbsp; 4K
+                        <% }); %>
+                    </div><br>
+                    <div class="form-floating d-flex align-items-center">
+                        <label class="floatingInput mb-0" style="margin-right: 20px;">Enter Movie Run Time :-</label>
+                        <input type="number" class="form-control border-0" value="<%= detail.movie_runtime %>" style="box-shadow: none; width: 30%;" placeholder="Movie Run Time" name="movie_runtime">
+                    </div><br>
+                    <% genre = [ "Action", "Adventure", "Comedy", "Drama", "Fantasy", "Horror", "Musicals", "Mystery", "Romance", "Science Fiction", "Sports", "Thriller", "Western"]; %>
+                        <div class="form-floating d-flex align-items-center">
+                        <label class="floatingInput mb-0 ms-3" style="width: 270px; margin-right: 20px;">Enter Movie Genres :-</label>
+                        <div class="row">
+                            <% genre.forEach((v, i) => { %>
+                                <div class="mx-4"><input type="checkbox" class="border-0 me-2" style="box-shadow: none;" placeholder="Movie Genres" name="movie_genres[]" value="<%= v %>" <% for(var o = 0; o < detail.movie_genres.length ; o++) { if(v == detail.movie_genres[o]) { %>  <%= "checked" %> <% }} %>>&nbsp; <%= v %></div>
+                            <% }) %>
+                        </div>
+                    </div><br>
+                    <div class="form-floating d-flex align-items-center">
+                        <label class="floatingInput mb-0" style="margin-right: 20px;">Enter Movie Rated :-</label>
+                        <input type="text" class="form-control border-0"value="<%= detail.movie_rated %>" style="box-shadow: none; width: 30%;" placeholder="Movie Rated" name="movie_rated">
+                    </div><br>
+                    <div class="form-floating d-flex align-items-center">
+                        <label class="floatingInput mb-0" style="margin-right: 20px;">Enter Movie Year :-</label>
+                        <input type="number" class="form-control border-0"value="<%= detail.movie_year %>" min="1990" style="box-shadow: none; width: 30%;" placeholder="Movie Year" name="movie_year">
+                    </div><br>
+                    <% lan = ["Hindi", "Gujarati", "Telugu", "Tamil", "Malayalam", "Kannada", "English"]; %>
+                    <div class="form-floating d-flex align-items-center">
+                        <label class="floatingInput mb-0" style="margin-right: 20px;">Enter Movie Language
+                            :-</label>
+                        <% lan.forEach((v, i) => { %>
+                            <div class="mx-4"><input type="checkbox" class="border-0 me-2" style="box-shadow: none;" placeholder="Movie Language" name="movie_language[]" value="<%= v %>" <% for(var o = 0; o < detail.movie_language.length ; o++) { if(v == detail.movie_language[o]) { %>  <%= "checked" %> <% }} %>>&nbsp; <%= v %></div>
+                        <% }) %>
+                    </div><br>
+                    <div class="form-floating d-flex align-items-center">
+                        <label class="floatingInput mb-0" style="margin-right: 20px;">Enter Movie Description :-</label>
+                        <textarea name="movie_description" class="form-control border-0" style="box-shadow: none; width: 30%;" placeholder="Movie Description" cols="30" rows="5"><%= detail.movie_description %></textarea>
+                    </div><br>
+                    <div class="form-floating d-flex align-items-center">
+                        <label class="floatingInput mb-0" style="margin-right: 20px;">Select Movie Poster :-</label>
+                        <input type="file" class="form-control border-0" style="box-shadow: none; width: 30%;" placeholder="Movie" name="movie_avatar">
+                        <img src="<%= detail.movie_avatar %>" width="200px">
+                    </div><br>
+                    <input type="submit" value="Edit" class="btn btn-primary px-4">
+                </form>
+            </div>
+        </div>
+        <!-- [ Main Content ] end -->
+
+    </div>
+</section>
+
+<%- include('footer') %>

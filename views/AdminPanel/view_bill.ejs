@@ -1,0 +1,55 @@
+<%- include('header'); %>
+
+<section class="pcoded-main-container">
+    <div class="p-4">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Active Student</h5>
+                        <span class="d-block m-t-5">use class <code>table-striped</code> inside table element</span>
+                    </div>
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>User Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Movie Name</th>
+                                        <th>noSeat</th>
+                                        <th>paySeat</th>
+                                        <th>screen</th>
+                                        <th>row</th>
+                                        <th>serial</th>
+                                    </tr>
+                                </thead>
+                                <tbody> 
+                                    <% var j = 1; for(var i of bill) { for(var o of detail) { if(i.plan_id.movie_id == o.id) { %>                                   
+                                    <tr>
+                                            <td><%= j++ %></td>
+                                            <td><%= i.user_id.username %></td>
+                                            <td><%= i.user_id.email %></td>
+                                            <td><%= i.phone %></td>
+                                            <td><%= o.movie_name %></td>
+                                            <td><%= i.noSeat %></td>
+                                            <td><%= i.paySeat %></td>
+                                            <td><%= i.screen %></td>
+                                            <td><%= i.row %></td>
+                                            <td><%= i.serial %></td>
+                                    </tr>
+                                    <% }}} %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<%- include('footer'); %>

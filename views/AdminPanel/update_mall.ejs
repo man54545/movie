@@ -1,0 +1,25 @@
+<%- include('header') %>
+
+<section class="pcoded-main-container p-5">
+    <div >
+        <!-- [ breadcrumb ] start -->
+     
+        <div class="row">
+            <div class="col-lg-12">
+                <form action="/mall/editData" method="post">
+                    <input type="hidden" value="<%= mall.id %>" name="editId">
+                    
+                    <div class="form-floating d-flex align-items-center">
+                        <label class="floatingInput mb-0" style="margin-right: 20px;">Enter Mall Name :-</label>
+                        <input type="text" class="form-control border-0" style="box-shadow: none; width: 30%;" value="<%= mall.mall_name %>" placeholder="Mall Name" name="mall_name">
+                    </div><br>
+                    <input type="submit" value="Edit" name="submit" class="btn btn-primary px-4">
+                </form>
+            </div>
+        </div>
+        <!-- [ Main Content ] end -->
+
+    </div>
+</section>
+
+<%- include('footer') %>

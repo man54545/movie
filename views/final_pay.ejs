@@ -1,0 +1,80 @@
+<%- include('header') %>
+<style>
+    table td{
+        font-size: 20px!important;
+        color: #000;
+    }
+</style>
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Movie Ticket</title>
+  <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" href="/movie-ticket/style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!--
+Inspired by: https://dribbble.com/shots/1166639-Movie-Ticket/attachments/152161
+-->
+
+<div class="py-5 mt-5">
+    <div class="ticket">
+        <div class="holes-top"></div>
+        <div class="title">
+            <p class="cinema" style="font-size: 15px;">PROSHOWZ CINEMA PRESENTS</p>
+            <p class="movie-title py-3 text-dark" style="font-weight: 800; font-size: 35px;"><%= detail.movie_name %></p>
+        </div>
+        <div class="poster">
+            <img src="<%= detail.movie_avatar %>" alt="<%= detail.movie_name %>" style="height: 300px; object-fit: cover;" width="100%"/>
+        </div>
+        <div class="info">
+        <table>
+            <tr>
+                <th>SCREEN</th>
+                <th>ROW</th>
+                <th>SEAT</th>
+            </tr>
+            <tr>
+                <td class="bigger"><%= data.screen %></td>
+                <td class="bigger"><%= data.row %></td>
+                <td class="bigger"><%= data.noSeat %></td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <th>PRICE</th>
+                <th>DATE</th>
+                <th>TIME</th>
+            </tr>
+            <% var price = data.paySeat.slice(4); %>
+            <tr>
+                <td><%= price %></td>
+                <td><%= date %></td>
+                <td><%= plan.show_time %></td>
+            </tr>
+        </table>
+        </div>
+        <div class="holes-lower"></div>
+        <div class="serial">
+
+            <table class="barcode"><tr></tr></table>
+            <table class="numbers">
+                <tr>
+                    <% for(let i = 0; i < data.serial.length; i++) { %>
+                        <td><%= data.serial[i] %></td>
+                    <% } %>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script><script  src="/movie-ticket/script.js"></script>
+
+</body>
+</html>
+
+<%- include('footer') %>

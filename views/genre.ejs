@@ -1,0 +1,218 @@
+<%- include('header') %>
+<style>
+    body{
+        font-family: poppins,sans-serif;
+        background-color: black;
+    }
+    .banner-meta ul li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        margin-right: 18px;
+    }
+    .banner-meta ul li.quality > span {
+        font-size: 11px;
+        text-transform: uppercase;
+        color: #21232b;
+        background: #fff;
+        font-weight: 700;
+        padding: 7px 11px;
+        line-height: 1;
+    }
+    .banner-meta ul li.quality > span {
+        font-size: 11px;
+        text-transform: uppercase;
+        color: #21232b;
+        background: #fff;
+        font-weight: 700;
+        padding: 7px 11px;
+        line-height: 1;
+    }
+    .banner-meta ul li.quality > span:last-child {
+        background: transparent;
+        color: #fff;
+        margin-left: 9px;
+        border: 2px solid #fff;
+        padding: 5px 10px;
+    }
+    .banner-meta ul li.category > a {
+        font-size: 14px;
+        font-weight: 500;
+        color: #e3dfdf;
+    }
+    .banner-meta ul li.release-time > span {
+        font-size: 14px;
+        font-weight: 500;
+        color: #e3dfdf;
+    }
+    .banner-meta ul li.release-time > span > i {
+        font-size: 12px;
+        margin-right: 5px;
+        color: #df0e62;
+    }
+    .banner-meta ul li.release-time > span + span {
+        margin-left: 15px;
+    }
+    .banner-meta ul li.release-time > span {
+        font-size: 14px;
+        font-weight: 500;
+        color: #e3dfdf;
+    }
+    p {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 26px;
+        color: #bcbcbc;
+        margin-bottom: 15px;
+    }
+    .movie-details-prime ul {
+        display: flex;
+        align-items: center;
+        max-width: 475px;
+        background: #242c38;
+        border-radius: 4px;
+        border: 1px solid #343434;
+        padding: 0px 25px 25px;
+        margin-top: 35px;
+        flex-wrap: wrap;
+    }
+    .movie-details-prime ul li.share {
+        padding-right: 25px;
+        margin-right: 25px;
+        position: relative;
+        text-align: center;
+    }
+    .movie-details-prime ul li.watch {
+        margin-left: auto;
+    }
+    .movie-details-prime ul li {
+        margin-top: 25px;
+    }
+    .movie-details-prime ul li.watch .btnn {
+        font-size: 14px;
+        padding: 13px 26px;
+        letter-spacing: 0;
+        background: transparent;
+        border: 2px solid #df0e62;
+        border-radius: 25px;
+        transition: 0.4s all;
+    }
+    .movie-details-prime ul li.watch .btnn:hover {
+        background: #df0e62;
+        color: #000;
+        border: 2px solid #df0e62;
+    }
+    li{
+        list-style: none;
+    }
+    .btnn > i {
+        margin-right: 7px;
+    }
+    .fa {
+        font-weight: 900;
+    }
+    .movie-details-prime ul li.share::before {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1px;
+        height: 56px;
+        background: #fff;
+        opacity: .15;
+    }
+    .movie-details-prime ul li.share a i {
+        display: block;
+        margin-bottom: 7px;
+        font-size: 16px;
+        color: #fff;
+    }
+    .movie-details-prime ul li.share a {
+        display: block;
+        color: #bcbcbc;
+        font-size: 14px;
+        font-weight: 500;
+    }
+    .movie-details-prime ul li.streaming h6 {
+        font-size: 16px;
+        margin-bottom: 5px;
+        font-weight: 800;
+        color: #fff;
+    }
+    .movie-details-prime ul li.streaming span {
+        display: block;
+        color: #bcbcbc;
+        font-size: 14px;
+    }
+    .container-xxl {
+        max-width: 1140px;
+        margin: 0 auto;
+    }
+    .movie-details-btn .download-btn {
+        background: #df0e62;
+        text-transform: uppercase;
+        font-size: 12px;
+        font-weight: 500;
+        color: #14141d;
+        letter-spacing: 5px;
+        position: absolute;
+        bottom: 65px;
+        right: -50px;
+        transform: rotate(90deg);
+        padding: 43px 49px;
+        border-radius: 6px;
+    }
+    .download-btn img {
+        max-width: 24px;
+        transform: rotate(-90deg);
+    }
+</style>
+<div class="container-xxl py-5">
+    <div class="row align-items-center position-relative mt-5 py-5">
+        <div class="col-lg-3">
+            <img src="<%= detail.movie_avatar %>" width="100%">
+        </div>
+        <div class="col-lg-6">
+            <div class="content">
+                <!-- <h5 style="font-size: 26px; margin-bottom: 10px; color: #df0e62; font-weight: 700;">New Movie</h5> -->
+                <h1 class="text-white display-4" style="letter-spacing: 8px; font-weight: 800;"><%= detail.movie_name %></h1>
+                <div class="banner-meta py-3">
+                    <ul class="d-flex flex-wrap">
+                        <li class="quality" style="margin-right: 9px;">
+                            <span><%= detail.movie_rated %></span>
+                            <span><%= detail.movie_quality %></span>
+                        </li>
+                        <li class="quality">
+                            <span><%= detail.movie_language %></span>
+                            <span class="d-none"></span>
+                        </li>
+                    </ul>
+                    <ul class="d-flex flex-wrap">
+                        <li class="category">
+                            <a href="#" style="text-transform: capitalize; letter-spacing: 2px;"><%= detail.movie_genres %> </a>
+                        </li>
+                        <li class="release-time">
+                            <span><i class="fa fa-calendar"></i> <%= detail.movie_year %></span>
+                            <span><i class="fa fa-clock-o"></i><%= detail.movie_runtime %> min</span>
+                        </li>
+                    </ul>
+                </div>
+                <p><%= detail.movie_description %></p>
+                <div class="movie-details-prime">
+                    <ul>
+                        <li class="share"><a href="#"><i class="fa fa-share-alt"></i> Share</a></li>
+                        <li class="streaming">
+                            <h6><%= other.movie_streaming_chanel %></h6>
+                            <span>Streaming Channels</span>
+                        </li>
+                        <li class="watch"><a href="/book_now/<%= detail.id %>" class="btnn popup-video"><i class="fa fa-play"></i> Book Tickets</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="movie-details-btn">
+            <a href="" class="download-btn">Rate Now <img src="/images/download.svg" alt=""></a>
+        </div>
+    </div>
+</div>

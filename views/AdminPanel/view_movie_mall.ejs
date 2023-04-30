@@ -1,0 +1,48 @@
+<%- include('header'); %>
+
+<section class="pcoded-main-container">
+    <div class="p-4">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Active Student</h5>
+                        <span class="d-block m-t-5">use class <code>table-striped</code> inside table element</span>
+                    </div>
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Movie Name</th>
+                                        <th>Mall Name</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody> 
+                                    <% var j = 1; for(var i of movie_mall) { %>                                   
+                                    <tr>
+                                        <td><%= j++ %></td>
+                                        <td><%= i.movie_id.movie_name %></td>
+                                        <td>
+                                                <% for(var o = 0; o < i.mall_id.length ; o++) { %>
+                                                    <%= i.mall_id[o].mall_name %><br>
+                                                <% } %>
+                                            </td>
+                                        <td><a href="/movie_mall/deleteData/<%= i.id %>" title="deleteData"><i class="feather icon-trash"></i></a> || 
+                                            <a href="/movie_mall/updateData/<%= i.id %>" title="updateData"><i class="feather icon-edit"></i></a></td>
+                                    </tr>
+                                    <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<%- include('footer'); %>

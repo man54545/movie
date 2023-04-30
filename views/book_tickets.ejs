@@ -1,0 +1,55 @@
+<%- include('header') %>
+
+<style>
+    li{
+        list-style: none;
+    }
+    body{
+        background-color: #000;
+    }
+    .box{
+        border: 2px solid #fff;
+        border-radius: 20px;
+        transition: 0.4s all;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .box:hover{
+        background-color: #DF0E62;
+        color: #000;
+        border-color: #DF0E62;
+    }
+    .box p{
+        font-weight: 800;
+    }
+</style>
+<div class="container py-5 my-5">
+    <div class="pt-5">
+        <h1 class="text-white display-4" style="letter-spacing: 8px; font-weight: 800;"><%= detail.movie_name %>(<%= other.movie_id.movie_quality %>) - <%= other.movie_id.movie_language %></h1>
+        <h5 class="mt-2" style="font-size: 26px; margin-bottom: 10px; color: #df0e62; font-weight: 700;"><%= other.movie_id.movie_genres %></h5>
+    </div>
+    <% for(var i=0; i < movie_mall.mall_id.length ; i++) { %>
+        <div class="row align-items-center justify-content-between p-4 my-5" style="background: #242c38; border-radius: 20px;">
+            <div class="col-lg-3">
+                <a href="#"><%= movie_mall.mall_id[i].mall_name %></a>
+                <ul class="list-none d-flex">
+                    <li><a href="#" class="px-3" style="font-size: 14px; color: #fff;">M-Ticket</a></li>
+                    <li><a href="#" class="px-3" style="font-size: 14px; color: #fff;">Food & Beverage</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-1"><a href="#" class="text-white"><i class="fa fa-info"></i> Info</a></div>
+            <div class="d-flex col-lg-8">
+                <% for(var j of plan) { if(movie_mall.mall_id[i].id == j.mall_id.id) { %>
+                    <a href="/bookShow/<%= j.id %>" class="box p-2 px-5 mx-3">
+                        <p><%= j.show_time %></p>
+                        <p><%= j.show_price %> $</p>
+                    </a>
+                <% }} %>
+            </div>
+        </div>
+    <% } %>
+</div>
+
+<%- include('footer') %>

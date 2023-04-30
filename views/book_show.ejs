@@ -1,0 +1,41 @@
+<%- include('header'); %>
+<style>
+        body{
+        background-color: #000;
+    }
+</style>
+
+<div class="container py-5 my-5">
+    <div class="pt-5">
+        <h1 class="text-white display-4" style="letter-spacing: 8px; font-weight: 800;"><%= show.movie_id.movie_name %>(<%= show.movie_id.movie_quality %>) - <%= show.movie_id.movie_language %></h1>
+        <h5 class="mt-2" style="font-size: 26px; margin-bottom: 10px; color: #df0e62; font-weight: 700;"><%= show.movie_id.movie_genres %></h5>
+    </div>
+    <form action="/finalPayment" method="post" class="py-5 my-5">
+        <input type="hidden" value="<%= show.show_price %>" id="a">
+        <input type="hidden" name="plan_id" value="<%= show.id %>">
+        <div class="form-floating d-flex align-items-center">
+            <label class="floatingInput mb-0" style="margin-right: 20px;">Enter Your Phone No. :-</label>
+            <input type="text" class="form-control border-0" style="box-shadow: none; width: 30%;" placeholder="Enter Your Phone No." name="phone">
+        </div><br>
+        <div class="form-floating d-flex align-items-center">
+            <label class="floatingInput mb-0" style="margin-right: 20px;">No. of Seats :-</label>
+            <input type="number" class="form-control border-0" id="noRupee" onchange="return getRupee()" style="box-shadow: none; width: 30%;" placeholder="No. of Seats" name="noSeat">
+        </div><br>
+        <input type="submit" id="paySeat" name="paySeat" class="btn btn-primary px-4">
+        <% if(data) { %>
+            <a href="/bill" class="btn btn-primary mr-lg-3 mt-lg-0 mt-4" title="search">Get Tickets</a>
+        <% } %>
+    </form>
+</div>
+
+<script>
+    function getRupee(){
+        var seat = document.getElementById('noRupee').value;
+        var rupee = document.getElementById('a').value;
+        console.log(seat);
+        var total = seat * rupee;
+        document.getElementById('paySeat').value = "Pay "+total+"$";
+    }
+</script>
+
+<%- include('footer'); %>

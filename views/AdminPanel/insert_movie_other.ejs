@@ -1,0 +1,44 @@
+<%- include('header') %>
+
+<section class="pcoded-main-container p-5">
+    <div >
+        <!-- [ breadcrumb ] start -->
+     
+        <div class="row">
+            <div class="col-lg-12">
+                <form action="/movie_others/add_other" method="post">
+                    <div class="form-floating d-flex align-items-center">
+                        <label class="floatingInput mb-0" style="margin-right: 20px;">Select Movie Name :-</label>
+                        <select name="movie_id" class="form-control" style="box-shadow: none; width: 30%;">
+                            <option value="">-- Select Movie Name -- </option>
+                            <%  for(var i of detail) { %>
+                                <option value="<%= i.id %>"><%= i.movie_name %></option>
+                            <% } %>
+                        </select>
+                    </div><br>
+                    <div class="form-floating d-flex align-items-center">
+                        <label class="floatingInput mb-0" style="margin-right: 20px;">Enter Movie Streaming Chanel :-</label>
+                        <input type="text" class="form-control border-0" style="box-shadow: none; width: 30%;" placeholder="Movie Streaming Chanel" name="movie_streaming_chanel">
+                    </div><br>
+                    <div class="form-floating d-flex align-items-center">
+                        <label class="floatingInput mb-0" style="margin-right: 20px;">Enter Movie View Count :-</label>
+                        <input type="number" class="form-control border-0" style="box-shadow: none; width: 30%;" placeholder="Movie View Count" name="movie_view_count">
+                    </div><br>
+                    <div class="form-floating d-flex align-items-center">
+                        <label class="floatingInput mb-0" style="margin-right: 20px;">Enter Movie Link :-</label>
+                        <input type="text" class="form-control border-0" style="box-shadow: none; width: 30%;" placeholder="Movie Link" name="movie_link">
+                    </div><br>
+                    <div class="form-floating d-flex align-items-center">
+                        <label class="floatingInput mb-0" style="margin-right: 20px;">Enter Movie Trailer Link :-</label>
+                        <input type="text" class="form-control border-0" style="box-shadow: none; width: 30%;" placeholder="Movie Trailer Link" name="movie_trailer_link">
+                    </div><br>
+                    <input type="submit" value="Submit" class="btn btn-primary px-4">
+                </form>
+            </div>
+        </div>
+        <!-- [ Main Content ] end -->
+
+    </div>
+</section>
+
+<%- include('footer') %>

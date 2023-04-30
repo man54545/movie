@@ -1,0 +1,37 @@
+<%- include('header'); %>
+
+<section class="w3l-grids py-5">
+    <div class="grids-main py-5">
+        <div class="container py-lg-3">
+            <div class="row">
+                <% for(var i of data) { if(i.movie_year >= 2020) { %>
+                    <div class="item vhny-grid col-lg-3">
+                        <div class="box16 mb-0">
+                            <a href="/genre/<%= i.id %>">
+                                <figure>
+                                    <img class="img-fluid" src="<%= i.movie_avatar %>" alt="" style="height: 300px; object-fit: cover;">
+                                </figure>
+                                <div class="box-content">
+                                    <h4> <span class="post"><span class="fa fa-clock-o"> </span> &nbsp;<%= i.movie_runtime %> min
+                                        </span>
+                                        <span class="post fa fa-heart text-right"></span>
+                                    </h4>
+                                </div>
+                                <span class="fa fa-play video-icon" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                        <h3> <a class="title-gd" href="/genre/<%= i.id %>"><%= i.movie_name %></a></h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+                        <div class="button-center text-center mt-4">
+                            <a href="/genre/<%= i.id %>" class="btn watch-button">View Details</a>
+                        </div>
+
+                    </div>
+                <% }} %>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<%- include('footer'); %>

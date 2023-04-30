@@ -1,0 +1,59 @@
+<%- include('header') %>
+
+<section class="pcoded-main-container p-5">
+    <div >
+        <!-- [ breadcrumb ] start -->
+     
+        <div class="row">
+            <div class="col-lg-12">
+                <form action="/movie_plan/add_plan" method="post">
+                    <div class="form-floating d-flex align-items-center">
+                        <label class="floatingInput mb-0" style="margin-right: 20px;">Select Movie Name :-</label>
+                        <select name="movie_id" id="movie_id" onchange="return getMall()" class="form-control" style="box-shadow: none; width: 30%;">
+                            <option value="">-- Select Movie Name -- </option>
+                            <%  for(var i of detail) { %>
+                                <option value="<%= i.id %>"><%= i.movie_name %></option>
+                            <% } %>
+                        </select>
+                    </div><br>
+                    <div class="form-floating d-flex align-items-center">
+                        <label class="floatingInput mb-0" style="margin-right: 20px;">Select Mall Name :-</label>
+                        <select name="mall_id" id="mall_id" class="form-control" style="box-shadow: none; width: 30%;">
+                            <option value="">-- Select Mall Name -- </option>
+                        </select>
+                    </div><br>
+                    <div class="form-floating d-flex align-items-center">
+                        <label class="floatingInput mb-0" style="margin-right: 20px;">Enter Show Time :-</label>
+                        <input type="text" class="form-control border-0" style="box-shadow: none; width: 30%;" placeholder="Show Time" name="show_time">
+                    </div><br>
+                    <div class="form-floating d-flex align-items-center">
+                        <label class="floatingInput mb-0" style="margin-right: 20px;">Enter Show Price :-</label>
+                        <input type="number" class="form-control border-0" style="box-shadow: none; width: 30%;" placeholder="Show Price" name="show_price">
+                    </div><br>
+                    <input type="submit" value="Submit" name="submit" class="btn btn-primary px-4">
+                </form>
+            </div>
+        </div>
+        <!-- [ Main Content ] end -->
+
+    </div>
+</section>
+
+<script>
+    function getMall(){
+        var id = document.getElementById('movie_id').value;
+        $.ajax({
+            url : "/movie_plan/get_mall",
+            type : "post",
+            data : {
+                Id : id
+            },
+            success : function(res){
+                $('#mall_id').html(res);
+            }
+        });
+    }
+</script>
+
+
+<%- include('footer') %>
